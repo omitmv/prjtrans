@@ -16,6 +16,10 @@ app.use('/user', verifyJWT, userRoutes)
 const clientRoutes = require('./routes/client')
 app.use('/client', verifyJWT, clientRoutes)
 
+//ticket
+const ticketRoutes = require('./routes/ticket')
+app.use('/ticket', verifyJWT, ticketRoutes)
+
 app.post('/login', (req, res) => {
     const token = jwt.sign({ userId: 1 }, process.env.SECRET, { expiresIn: 300 })
     res.json({ auth: true, token })

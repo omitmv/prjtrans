@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/3ccb3f8f-38cc-4dbb-a502-6498dfde3dc5/appservices/subscriptions/3ccb3f8f-38cc-4dbb-a502-6498dfde3dc5/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/transfapi",
+  "appService.deploySubpath": "."
+}

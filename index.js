@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-require('dotenv-safe').config()
-const jwt = require('jsonwebtoken')
+const { getToken } = require('./utils/cripto.js')
 
 app.use(bodyParser.json())
 
@@ -21,9 +20,15 @@ const ticketRoutes = require('./routes/ticket')
 app.use('/ticket', verifyJWT, ticketRoutes)
 
 app.post('/login', (req, res) => {
-    const token = jwt.sign({ userId: 1 }, process.env.SECRET, { expiresIn: 300 })
-    res.json({ auth: true, token })
-    res.status(200).end()
+    if (req.body.idUser) {
+        let idUser = req.body.idUser
+        const token = getToken(idUser)
+        res.json({ auth: true, idUser, token })
+        res.status(200).end()
+    } else {
+        res.json({ auth: false })
+        res.status(500).end()
+    }
 })
 
 function verifyJWT(req, res, next) {

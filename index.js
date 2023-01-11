@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const { getToken } = require('./utils/cripto.js')
+const { criptGetToken, criptVerifyJWT } = require('./utils/cripto.js')
 
 app.use(bodyParser.json())
 
@@ -22,7 +22,7 @@ app.use('/ticket', verifyJWT, ticketRoutes)
 app.post('/login', (req, res) => {
     if (req.body.idUser) {
         let idUser = req.body.idUser
-        const token = getToken(idUser)
+        const token = criptGetToken(idUser)
         res.json({ auth: true, idUser, token })
         res.status(200).end()
     } else {
@@ -33,11 +33,14 @@ app.post('/login', (req, res) => {
 
 function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token']
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
-        if (err) return res.status(401).end()
-        req.userId = decoded.userId
-        next()
-    })
+    res.json(criptVerifyJWT(token))
+        /*
+                            jwt.verify(token, process.env.SECRET, (err, decoded) => {
+                                if (err) return res.status(401).end()
+                                req.userId = decoded.userId
+                                next()
+                            })
+                            */
 }
 
 app.listen(process.env.PORT, () => {

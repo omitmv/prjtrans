@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const { criptGetToken, criptVerifyJWT } = require('./utils/cripto.js')
+const jwt = require('jsonwebtoken')
+const { criptGetToken } = require('./utils/cripto.js')
 
 app.use(bodyParser.json())
 
@@ -33,8 +34,11 @@ app.post('/login', (req, res) => {
 
 function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token']
-    res.json(criptVerifyJWT(token))
-    res.status(200).end()
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+        if (err) return res.status(401).end()
+        req.userId = decoded.userId
+        next()
+    })
 }
 
 app.listen(process.env.PORT, () => {

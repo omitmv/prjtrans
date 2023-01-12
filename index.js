@@ -34,13 +34,7 @@ app.post('/login', (req, res) => {
 function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token']
     res.json(criptVerifyJWT(token))
-        /*
-                            jwt.verify(token, process.env.SECRET, (err, decoded) => {
-                                if (err) return res.status(401).end()
-                                req.userId = decoded.userId
-                                next()
-                            })
-                            */
+    res.status(200).end()
 }
 
 app.listen(process.env.PORT, () => {

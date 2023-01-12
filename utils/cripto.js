@@ -8,7 +8,7 @@ const criptGetToken = value => {
 const criptVerifyJWT = value => {
     jwt.verify(value, process.env.SECRET, (err, decoded) => {
         if (err) {
-            return 0
+            return err
         } else {
             return decoded.userId
         }

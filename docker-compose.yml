@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  ptfapi:
+    image: ptfapi
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 420:420

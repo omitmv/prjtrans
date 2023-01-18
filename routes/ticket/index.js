@@ -1,4 +1,3 @@
-require('dotenv-safe').config()
 const express = require('express')
 const router = express.Router()
 const oracledb = require('oracledb')

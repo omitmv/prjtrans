@@ -31,7 +31,7 @@ const auth = async(login, pass) => {
             WHERE login = '${login}'
             AND senha = '${md5(pass)}'`, []
         )
-        return result.rows[0]
+        return result
     } catch (err) {
         return err.message
     } finally {

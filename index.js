@@ -7,7 +7,6 @@ const { criptGetToken } = require('./utils/cripto.js')
 app.use(bodyParser.json())
 
 //Rotas
-
 //user
 const userRoutes = require('./routes/user')
 app.use('/user', verifyJWT, userRoutes)
@@ -20,6 +19,7 @@ app.use('/client', verifyJWT, clientRoutes)
 const ticketRoutes = require('./routes/ticket')
 app.use('/ticket', verifyJWT, ticketRoutes)
 
+//login
 app.post('/login', (req, res) => {
     if (req.body.idUser) {
         let idUser = req.body.idUser
@@ -32,6 +32,7 @@ app.post('/login', (req, res) => {
     }
 })
 
+//Verificar JWT
 function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token']
     jwt.verify(token, 'byOmitmv@123', (err, decoded) => {
@@ -42,5 +43,5 @@ function verifyJWT(req, res, next) {
 }
 
 app.listen(3000, () => {
-    console.log(`Example app listening on port 3000 !`)
+    console.log(`Example app listening on port 3000, teste !`)
 })

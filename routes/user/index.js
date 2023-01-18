@@ -13,11 +13,11 @@ const config = {
 }
 
 router.get('/', function(req, res, next) {
-    res.json({ rota: '/user' })
+    res.status(200).json({ rota: '/user' })
 })
 
 router.get('/teste', function(req, res, next) {
-    res.json({ rota: '/user/teste' })
+    res.status(200).json({ rota: '/user/teste' })
 })
 
 const auth = async(login, pass) => {

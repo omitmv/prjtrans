@@ -27,15 +27,12 @@ app.post('/login', async(req, res) => {
         const result = await userRoutes.auth(body.login, body.pass)
         if (result) {
             const token = criptGetToken(result)
-            res.json({ auth: true, token })
-            res.status(200).end()
+            res.status(200).json({ auth: true, token })
         } else {
-            res.json({ auth: false, message: result })
-            res.status(500).end()
+            res.status(500).json({ auth: false, message: result })
         }
     } else {
-        res.json({ auth: false, message: `Dados inconsistentes.` })
-        res.status(500).end()
+        res.status(500).json({ auth: false, message: `Dados inconsistentes.` })
     }
 })
 

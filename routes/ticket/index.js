@@ -19,15 +19,15 @@ router.get('/', async function(req, res, next) {
         const result = await conn.execute(
             `SELECT * FROM TRANS.tbCtrUsuario WHERE fl_ativo = 'S'`, []
         )
-        res.send(result.rows)
+        res.status(200).send(result.rows)
     } catch (err) {
-        res.send(err.message)
+        res.status(401).send(err.message)
     } finally {
         if (conn) {
             try {
                 await conn.close()
             } catch (err) {
-                res.send(err.message)
+                res.status(401).send(err.message)
             }
         }
     }

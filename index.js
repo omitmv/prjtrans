@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 //Rotas
 //user
 const userRoutes = require('./routes/user')
-app.use('/user', verifyJWT, userRoutes)
+app.use('/user', verifyJWT, userRoutes.router)
 
 //client
 const clientRoutes = require('./routes/client')
@@ -21,11 +21,12 @@ const ticketRoutes = require('./routes/ticket')
 app.use('/ticket', verifyJWT, ticketRoutes)
 
 //login
-app.post('/login', (req, res) => {
-    if (req.body.idUser) {
-        let idUser = req.body.idUser
-        const token = criptGetToken(idUser)
-        res.json({ auth: true, idUser, token })
+app.post('/login', async(req, res) => {
+    if (req.body.login && req.body.pass) {
+        const body = req.body
+        const result = await userRoutes.auth(body.login, body.pass)
+        const token = criptGetToken(result)
+        res.json({ auth: true, token })
         res.status(200).end()
     } else {
         res.json({ auth: false })

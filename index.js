@@ -25,11 +25,16 @@ app.post('/login', async(req, res) => {
     if (req.body.login && req.body.pass) {
         const body = req.body
         const result = await userRoutes.auth(body.login, body.pass)
-        const token = criptGetToken(result)
-        res.json({ auth: true, token })
-        res.status(200).end()
+        if (result.CD_USUARIO) {
+            const token = criptGetToken(result)
+            res.json({ auth: true, token })
+            res.status(200).end()
+        } else {
+            res.json({ auth: false, message: result })
+            res.status(500).end()
+        }
     } else {
-        res.json({ auth: false })
+        res.json({ auth: false, message: `Dados inconsistentes.` })
         res.status(500).end()
     }
 })
@@ -39,7 +44,6 @@ function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token']
     jwt.verify(token, dotenv.SECRET, (err, decoded) => {
         if (err) return res.status(401).end()
-        req.userId = decoded.userId
         next()
     })
 }

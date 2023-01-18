@@ -1,5 +1,4 @@
-require('dotenv').config()
-console.log(process.env)
+const { dotenv } = require('./utils/variables')
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -37,13 +36,13 @@ app.post('/login', (req, res) => {
 //Verificar JWT
 function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token']
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+    jwt.verify(token, dotenv.SECRET, (err, decoded) => {
         if (err) return res.status(401).end()
         req.userId = decoded.userId
         next()
     })
 }
 
-app.listen(process.env.PORT_API, () => {
-    console.log(`Example app listening on port ${process.env.PORT_API} !`)
+app.listen(dotenv.PORT_API, () => {
+    console.log(`Example app listening on port ${dotenv.PORT_API} !`)
 })

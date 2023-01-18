@@ -1,4 +1,4 @@
-require('dotenv').config()
+const { dotenv } = require('../../utils/variables')
 const express = require('express')
 const router = express.Router()
 const oracledb = require('oracledb')
@@ -6,9 +6,9 @@ const oracledb = require('oracledb')
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT
 
 const config = {
-    user: process.env.ORACLE_USER,
-    password: process.env.ORACLE_PASS,
-    connectString: process.env.ORACLE_CONNECT_STRING
+    user: dotenv.ORACLE_USER,
+    password: dotenv.ORACLE_PASS,
+    connectString: dotenv.ORACLE_CONNECT_STRING
 }
 
 router.get('/', async function(req, res, next) {

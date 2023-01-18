@@ -1,4 +1,4 @@
-require('dotenv-safe').config()
+require('dotenv').config({ silent: true })
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')

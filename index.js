@@ -1,4 +1,5 @@
 require('dotenv').config()
+console.log(process.env)
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -43,6 +44,6 @@ function verifyJWT(req, res, next) {
     })
 }
 
-app.listen(process.env.PORT, () => {
-    console.log(`Example app listening on port ${process.env.PORT} !`)
+app.listen(process.env.PORT_API, () => {
+    console.log(`Example app listening on port ${process.env.PORT_API} !`)
 })

@@ -1,3 +1,4 @@
+require('dotenv').config({ silent: true })
 const jwt = require('jsonwebtoken')
 
 const criptGetToken = value => {

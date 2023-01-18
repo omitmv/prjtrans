@@ -1,3 +1,4 @@
+require('dotenv').config({ silent: true })
 const express = require('express')
 const router = express.Router()
 const oracledb = require('oracledb')

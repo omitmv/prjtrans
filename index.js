@@ -34,13 +34,15 @@ app.post('/login', (req, res) => {
 
 function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token']
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+        //jwt.verify(token, process.env.SECRET, (err, decoded) => {
+    jwt.verify(token, 'byOmitmv@123', (err, decoded) => {
         if (err) return res.status(401).end()
         req.userId = decoded.userId
         next()
     })
 }
 
-app.listen(process.env.PORT, () => {
-    console.log(`Example app listening on port ${process.env.PORT} !`)
+app.listen(3000, () => {
+    //console.log(`Example app listening on port ${process.env.PORT} !`)
+    console.log(`Example app listening on port 3000 !`)
 })

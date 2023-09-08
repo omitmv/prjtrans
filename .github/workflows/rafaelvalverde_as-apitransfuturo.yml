@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'as-apitransfuturo'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3B16263FA8F841C8B52D8B8EE6052101 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4B2AECACDB174B4D8E92C2152A4A21F5 }}
           package: .

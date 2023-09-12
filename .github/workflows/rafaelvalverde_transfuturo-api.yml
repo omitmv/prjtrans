@@ -41,4 +41,4 @@ jobs:
           app-name: 'transfuturo-api'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_99FECD3C5F794F52A7A9A888671E9C8F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E1EE2AA1B43046B4A01F90D273B26092 }}

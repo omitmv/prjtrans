@@ -1,0 +1,18 @@
+<RequestEnvioMacro login="23126330000123" senha="897707">
+  <macro tipo="2">
+    <id>1</id>
+    <veiID>403084</veiID>
+    <tfrID>16865</tfrID>
+    <tfrParam>teste web service|</tfrParam>
+    <usuario>vitorrosa</usuario>
+  </macro>
+</RequestEnvioMacro>
+<RequestVeiculo>
+  <login>23126330000123</login>
+  <senha>897707</senha>
+</RequestVeiculo>
+<RequestItemMacro>
+  <login>23126330000123</login>
+  <senha>897707</senha>
+  <todosItens>1</todosItens>
+</RequestItemMacro>

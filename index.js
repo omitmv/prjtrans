@@ -48,6 +48,8 @@ function verifyJWT(req, res, next) {
   })
 }
 
+const port = process.env.PORT_API || 3001
+
 app.listen(process.env.PORT_API, () => {
-  console.log(`Example app listening on port ${process.env.PORT_API} !`)
+  console.log(`Example app listening on port ${port} !`)
 })

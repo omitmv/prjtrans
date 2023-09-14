@@ -6,13 +6,11 @@ RUN yum -y update && \
   yum -y install oracle-instantclient-basic && \
   yum -y install vim && \
   yum -y install git && \
-  mkdir -p /usr/src/api && \
   rm -rf /var/cache/yum
-COPY ./prjtrans/* /usr/src/api/
-WORKDIR /usr/src/api/prjtrans
+WORKDIR /home/rafael/prjtrans
 RUN npm install --production --silent
 EXPOSE 4300
-CMD node /usr/src/api/prjtrans/index.js
+CMD node /home/rafael/prjtrans/index.js
 #Command for creation of the docker image
 #sudo docker build -t image-api .
 #Command for creation of the container

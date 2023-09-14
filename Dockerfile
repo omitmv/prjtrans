@@ -8,7 +8,7 @@ RUN yum -y update && \
   yum -y install git && \
   rm -rf /var/cache/yum
 WORKDIR /home/rafael/prjtrans
-RUN npm install --production --silent
+RUN npm install --silent
 EXPOSE 4300
 CMD node /home/rafael/prjtrans/index.js
 #Command for creation of the docker image

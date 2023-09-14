@@ -9,7 +9,7 @@ RUN yum -y update && \
   yum -y install git && \
   rm -rf /var/cache/yum
 WORKDIR /usr/src
-RUN git clone https://omit.mv:Rafae46c15@gitlab.com/omit.mv/prjtrans.git
+RUN git clone https://github.com/omitmv/prjtrans.git
 WORKDIR /usr/src/prjtrans
 RUN npm install --production --silent
 EXPOSE 4300
